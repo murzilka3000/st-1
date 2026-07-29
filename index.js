@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
 //
 //
 document.addEventListener("DOMContentLoaded", () => {
-  const image1 = document.querySelector(".all-img");
-  const image2 = document.querySelector(".section-100-2 img");
+  const image1 = document.querySelector(".cont8");
+  const image2 = document.querySelector(".section-100-2 .cont5");
 
   window.addEventListener("scroll", () => {
     if (window.innerWidth >= 967) {
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (rect1.top < windowHeight && rect1.bottom > 0) {
           const shift1 =
             (windowHeight / 2 - (rect1.top + rect1.height / 2)) * speed;
-          image1.style.transform = `translateY(${shift1}px) scale(1.1)`;
+          image1.style.transform = `translateY(${shift1}px)`;
         }
       }
 
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (rect2.top < windowHeight && rect2.bottom > 0) {
           const shift2 =
             -(windowHeight / 2 - (rect2.top + rect2.height / 2)) * speed;
-          image2.style.transform = `translateY(${shift2}px) scale(1.1)`;
+          image2.style.transform = `translateY(${shift2}px)`;
         }
       }
     } else {
@@ -153,63 +153,75 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const elements = document.querySelectorAll(".h2, .p");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const elements = document.querySelectorAll(".h2, .p");
 
-  elements.forEach((element) => {
-    const childNodes = Array.from(element.childNodes);
-    element.innerHTML = "";
+//   elements.forEach((element) => {
+//     const childNodes = Array.from(element.childNodes);
+//     element.innerHTML = "";
 
-    childNodes.forEach((node) => {
-      if (node.nodeName === "BR") {
-        element.appendChild(document.createElement("br"));
-      } else {
-        const text = node.textContent;
-        const words = text.split(/(\s+)/);
+//     childNodes.forEach((node) => {
+//       if (node.nodeName === "BR") {
+//         element.appendChild(document.createElement("br"));
+//       } else {
+//         const text = node.textContent;
+//         const words = text.split(/(\s+)/);
 
-        words.forEach((word) => {
-          if (word.trim() === "") {
-            return;
-          }
+//         words.forEach((word) => {
+//           if (word.trim() === "") {
+//             return;
+//           }
 
-          const wordSpan = document.createElement("span");
-          wordSpan.classList.add("word");
+//           const wordSpan = document.createElement("span");
+//           wordSpan.classList.add("word");
 
-          const characters = word.split("");
-          characters.forEach((char) => {
-            const letterSpan = document.createElement("span");
-            letterSpan.textContent = char;
-            letterSpan.classList.add("letter");
-            wordSpan.appendChild(letterSpan);
-          });
+//           const characters = word.split("");
+//           characters.forEach((char) => {
+//             const letterSpan = document.createElement("span");
+//             letterSpan.textContent = char;
+//             letterSpan.classList.add("letter");
+//             wordSpan.appendChild(letterSpan);
+//           });
 
-          element.appendChild(wordSpan);
-        });
-      }
-    });
-  });
+//           element.appendChild(wordSpan);
+//         });
+//       }
+//     });
+//   });
 
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px 0px -10% 0px",
-    threshold: 0.1,
-  };
+//   const observerOptions = {
+//     root: null,
+//     rootMargin: "0px 0px -10% 0px",
+//     threshold: 0.1,
+//   };
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const letters = entry.target.querySelectorAll(".letter");
-        letters.forEach((letter, index) => {
-          setTimeout(() => {
-            letter.classList.add("visible");
-          }, index * 25);
-        });
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
+//   const observer = new IntersectionObserver((entries, observer) => {
+//     entries.forEach((entry) => {
+//       if (entry.isIntersecting) {
+//         const letters = entry.target.querySelectorAll(".letter");
+//         letters.forEach((letter, index) => {
+//           setTimeout(() => {
+//             letter.classList.add("visible");
+//           }, index * 25);
+//         });
+//         observer.unobserve(entry.target);
+//       }
+//     });
+//   }, observerOptions);
 
-  elements.forEach((element) => {
-    observer.observe(element);
-  });
-});
+//   elements.forEach((element) => {
+//     observer.observe(element);
+//   });
+// });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
