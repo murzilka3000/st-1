@@ -1199,3 +1199,15 @@ html {
   opacity: 1;
   transform: translateY(0);
 }
+
+@media screen and (max-width: 967px) {
+  .cont8 span {
+    right: auto;
+    left: 7px;
+  }
+
+  .cont8 {
+    position: relative !important;
+    left: 0;
+  }
+}
