@@ -1211,3 +1211,21 @@ html {
     left: 0;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .section-99 {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .section-big {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .section-big {
+    margin-top: 40px;
+  }
+}
