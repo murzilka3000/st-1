@@ -112,7 +112,6 @@ html {
 }
 
 .new-second-section {
-  margin-top: -150px;
   margin-bottom: 112px;
 }
 
@@ -123,7 +122,8 @@ html {
 .new-second-section-cont {
   display: flex;
   gap: 140px;
-  align-items: flex-end;
+  align-items: center;
+  margin-top: 112px;
 }
 
 .new-second-section-cont div {
@@ -785,6 +785,10 @@ html {
     padding-left: 22px;
     padding-right: 22px;
     margin-bottom: 40px;
+  }
+
+  .new-second-section-cont {
+    margin-top: 0;
   }
 
   .new-dubble-img-section {
