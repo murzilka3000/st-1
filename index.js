@@ -152,3 +152,64 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".h2, .p");
+
+  elements.forEach((element) => {
+    const childNodes = Array.from(element.childNodes);
+    element.innerHTML = "";
+
+    childNodes.forEach((node) => {
+      if (node.nodeName === "BR") {
+        element.appendChild(document.createElement("br"));
+      } else {
+        const text = node.textContent;
+        const words = text.split(/(\s+)/);
+
+        words.forEach((word) => {
+          if (word.trim() === "") {
+            return;
+          }
+
+          const wordSpan = document.createElement("span");
+          wordSpan.classList.add("word");
+
+          const characters = word.split("");
+          characters.forEach((char) => {
+            const letterSpan = document.createElement("span");
+            letterSpan.textContent = char;
+            letterSpan.classList.add("letter");
+            wordSpan.appendChild(letterSpan);
+          });
+
+          element.appendChild(wordSpan);
+        });
+      }
+    });
+  });
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px 0px -10% 0px",
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const letters = entry.target.querySelectorAll(".letter");
+        letters.forEach((letter, index) => {
+          setTimeout(() => {
+            letter.classList.add("visible");
+          }, index * 25);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  elements.forEach((element) => {
+    observer.observe(element);
+  });
+});
